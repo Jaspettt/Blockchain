@@ -135,9 +135,9 @@ def turntoword(privatekey):
     word1 = ""
     word2 = ""
     for i in privkey1:
-        word1 += chr(int(i) * 40)
+        word1 += chr((int(i) + 10) * 5)
     for i in privkey2:
-        word2 += chr(int(i) * 40)
+        word2 += chr((int(i) + 10) * 5)
     return word1 + " " + word2
 
 def turntonum(word):
@@ -146,9 +146,9 @@ def turntonum(word):
     num1 = ""
     num2 = ""
     for i in privkey1:
-        num1 = ord(i) / 50
+        num1 += str((int(ord(i) / 5) - 10))
     for i in privkey2:
-        num2 = ord(i) / 50
+        num2 += str((int(ord(i) / 5) - 10))
     return (int(num1), int(num2))
 
 transactions = ChainOfBlocks()
@@ -156,7 +156,8 @@ xpub, ypriv = generate_keypair()
 sign = encrypt(212, xpub)
 word = turntoword(ypriv)
 
-print(word)
+print("Your signature: " + word)
+
 print("Welcome!")
 
 while (True):
